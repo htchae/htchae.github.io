@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
+    />
+    <title>WON LEE - Portfolio</title>
+
+    <!-- Performance optimizations -->
+    <meta
+      name="description"
+      content="Portfolio website for Won Lee, Software Developer specializing in creative products and applications."
+    />
+
+    <!-- <link rel="preload" href="vids/test.png" as="image" fetchpriority="high" /> -->
+    <link rel="preload" href="vids/test.webp" as="image" type="image/webp" fetchpriority="high" />
+
+    <!-- <link
+      rel="preload"
+      href="css/Zuume ExtraBold.woff"
+      as="font"
+      type="font/woff"
+      crossorigin="anonymous"
+    /> -->
+
+    <link
+      rel="preload"
+      href="css/Zuume ExtraBold.woff"
+      as="font"
+      type="font/woff"
+      crossorigin="anonymous"
+    />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/styles.min.css" as="style" />
+    <link rel="preload" href="js/main.js" as="script" />
+    <!-- <link rel="preload" href="vids/test.png" as="image" type="image/webp" /> -->
+    <link rel="preload" href="img/project1/slide1.png" as="image" />
+
+    <!-- Critical CSS inline -->
+    <style>
+      /* Critical CSS for above-the-fold content */
+      :root {
+        --color-primary: #cb5cff;
+        --bg-primary: hsl(0, 0%, 12%);
+        --bg-secondary: hsl(0, 0%, 19%);
+        --text-primary: hsl(0, 0%, 100%);
+        --text-secondary: hsl(0, 0%, 62%);
+        --font-main: ui-sans-serif, system-ui, sans-serif;
+        --font-title: 'Zuume ExtraBold', sans-serif;
+        --font-logo: 'Zuume ExtraBold', sans-serif;
+        --nav-height: 60px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: var(--font-main);
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      #main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        height: var(--nav-height);
+      }
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+       /* Add this to your critical CSS */
+  #carousel-section {
+    padding: 0;
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    height: 300px;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+  }
+  
+  .carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .carousel-track {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    will-change: transform;
+    animation: infiniteScroll 30s linear infinite;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  .carousel-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url('vids/test.webp');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+  }
+  
+  @keyframes infiniteScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* transform: translateX(-50%); */
+      transform: translateX(var(--carousel-animation-distance, -50%));
+
+    }
+  }
+  
+  /* Optional loading animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #222 8%, #333 18%, #222 33%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+
+    </style>
+
+    <!-- Load full CSS directly to prevent FOUC -->
+    <link rel="stylesheet" href="css/styles.min.css" />
+  </head>
+  <body class="light_theme">
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <nav id="main-nav">
+      <div class="container">
+        <div class="nav-wrapper">
+          <div class="nav-header">
+            <button
+              type="button"
+              class="nav-toggle"
+              id="nav-toggle"
+              aria-label="Toggle navigation"
+            >
+              <span class="line one"></span>
+              <span class="line two"></span>
+              <span class="line three"></span>
+            </button>
+            <!-- Logo only visible in desktop mode -->
+            <a class="logo desktop-only" href="#home">W<span>.</span></a>
+
+            <!-- Mobile horizontal scroll buttons, only visible on mobile -->
+            
+          </div>
+
+          <div class="nav-menu" id="nav-menu">
+            <!-- Logo inside mobile menu -->
+            <a class="logo mobile-only" href="#home">W<span>.</span></a>
+            <ul class="nav-list">
+              <li><a href="#home" class="nav-link">Home</a></li>
+              <li><a href="#about" class="nav-link">Skills</a></li>
+              <li><a href="#myapps" class="nav-link">Apps</a></li>
+              <li><a href="#keyprojects" class="nav-link">Main Projects</a></li>
+              <li><a href="#portfolio" class="nav-link">Other Projects</a></li>
+              <li><a href="#blog" class="nav-link">Blog</a></li>
+              <li class="language-switch">
+                <button id="lang-ko" class="lang-btn active" data-lang="ko">
+                  한국어
+                </button>
+                <span class="lang-separator">|</span>
+                <button id="lang-en" class="lang-btn" data-lang="en">
+                  English
+                </button>
+              </li>
+
+              <!-- Footer links in mobile menu -->
+              <li class="mobile-footer-links">
+                <h4>Resources</h4>
+                <ul>
+                  <li>
+                    <a href="img/portfolio-korean.pdf" target="_blank"
+                      >Portfolio PDF Korean</a
+                    >
+                  </li>
+                  <li>
+                    <a href="img/portfolio-english.pdf" target="_blank"
+                      >Portfolio PDF English</a
+                    >
+                  </li>
+                  <li>
+                    <a href="resume-korean.pdf" target="_blank"
+                      >Resume Korean</a
+                    >
+                  </li>
+                  <li>
+                    <a href="resume.pdf" target="_blank">Resume English</a>
+                  </li>
+                  <li>
+                    <a href="wonblog.vercel.app" target="_blank">Blog</a>
+                  </li>
+                </ul>
+
+                <h4>Contact</h4>
+                <ul>
+                  <li>
+                    <a href="mailto:whd793@gmail.com">
+                      <span class="icon icon-envelope"></span> whd793@gmail.com
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://linkedin.com/in/whd793" target="_blank">
+                      <span class="icon icon-linkedin"></span> LinkedIn
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/whd793" target="_blank">
+                      <span class="icon icon-github"></span> GitHub
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- New horizontal scrollable button container - only visible on desktop -->
+    <div class="horizontal-button-container desktop-only">
+      <div class="scroll-buttons">
+        <a
+          href="img/portfolio-korean.pdf"
+          class="btn btn-pill"
+          data-lang-key="portfolio-pdf"
+          target="_blank"
+        >
+          <div class="btn-text">포트폴리오 PDF</div>
+        </a>
+
+        <a
+          href="img/portfolio-english.pdf"
+          class="btn btn-pill"
+          data-lang-key="portfolio-pdf-eng"
+          target="_blank"
+        >
+          <div class="btn-text">포트폴리오 PDF 영문</div>
+        </a>
+
+        <a
+          href="resume-korean.pdf"
+          class="btn btn-pill"
+          data-lang-key="resume-ko"
+          target="_blank"
+        >
+          <div class="btn-text">이력서</div>
+        </a>
+
+        <a
+          href="resume.pdf"
+          class="btn btn-pill"
+          data-lang-key="resume-en"
+          target="_blank"
+        >
+          <div class="btn-text">이력서 영문</div>
+        </a>
+
+        <a
+          href="https://wonblog.vercel.app"
+          class="btn btn-pill"
+          data-lang-key="blog"
+          target="_blank"
+        >
+          <div class="btn-text">Blog</div>
+        </a>
+
+        <a
+          href="https://linkedin.com/whd793"
+          class="btn btn-pill"
+          target="_blank"
+        >
+          <div class="btn-text">
+            <span class="icon icon-linkedin"></span>
+          </div>
+        </a>
+
+        <a
+          href="https://github.com/whd793"
+          class="btn btn-pill"
+          target="_blank"
+        >
+          <div class="btn-text">
+            <span class="icon icon-github"></span>
+          </div>
+        </a>
+
+        <a href="mailto:whd793@gmail.com" class="btn btn-pill">
+          <div class="btn-text">
+            <span class="icon icon-envelope"></span> - whd793@gmail.com
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <section id="home" class="text-center">
+      <div class="home-content">
+        <div class="content hero-effect">
+          <!-- <h1 class="header-title">
+            <strong><span class="text">WONHEE LEE</span></strong>
+          </h1> -->
+          <h1 class="header-title" style="">
+            <strong><span class="text">WONHEE LEE</span></strong>
+          </h1>
+
+          <h2 class="hero-title">
+            Software Developer - Design & Build Creative Products
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separate carousel section -->
+    <!-- <section id="carousel-section">
+      <div class="gif-carousel">
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <img
+              class="carousel-image lazy-gif"
+              src="vids/test.png"
+              alt="Portfolio Preview"
+            />
+           
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <section id="carousel-section">
+      <div class="gif-carousel">
+        <div class="carousel-container">
+          <!-- Optional placeholder that disappears when image loads -->
+          <div class="image-placeholder" id="carousel-placeholder"></div>
+          <div class="carousel-track">
+            <div class="carousel-bg"></div>
+            <!-- <div class="carousel-bg"></div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <container>
+        
+          <div class="bzbz ">
+            <a
+              href="img/portfolio-korean.pdf"
+              class="bzbz2"
+              data-lang-key="portfolio-pdf"
+              target="_blank"
+            >
+              <div class="btn-text">포트폴리오 PDF</div>
+            </a>
+            <a
+              href="img/portfolio-korean.pdf"
+              class="bzbz2"
+              data-lang-key="portfolio-pdf-eng"
+              target="_blank"
+            >
+              <div class="btn-text">포트폴리오 PDF 영문</div>
+            </a>
+
+            <a
+              href="resume-korean.pdf"
+              class="bzbz2"
+              data-lang-key="resume-ko"
+              target="_blank"
+            >
+              <div class="btn-text">이력서</div>
+            </a>
+
+            <a
+              href="resume-korean.pdf"
+              class="bzbz2"
+              data-lang-key="resume-en"
+              target="_blank"
+            >
+              <div class="btn-text">이력서 영문</div>
+            </a>
+          
+            <a
+            href="https://wonblog.vercel.app"
+            class="bzbz2"
+            data-lang-key="blog"
+            target="_blank"
+          >
+            <div class="btn-text">Blog</div>
+          </a>
+  
+          <a
+            href="https://linkedin.com/whd793"
+            class="bzbz2"
+            target="_blank"
+          >
+            <div class="btn-text">
+              <span class="icon icon-linkedin"></span>
+            </div>
+          </a>
+  
+          <a
+            href="https://github.com/whd793"
+            class="bzbz2"
+            target="_blank"
+          >
+            <div class="btn-text">
+              <span class="icon icon-github"></span>
+            </div>
+          </a>
+  
+          <a href="mailto:whd793@gmail.com" class="bzbz2">
+            <div class="btn-text">
+              <span class="icon icon-envelope"></span> - whd793@gmail.com
+            </div>
+          </a>
+
+          </div>
+        </div>
+      </container>
+    </section>
+
+    <!-- About section -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-title center">
+          <h2>SKILLS</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="skills-container">
+          <div class="skills-column">
+            <div class="skills-group">
+              <h4>Frontend:</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">TailwindCSS</span>
+                <span class="skill-tag">Javascript</span>
+                <span class="skill-tag">React.js</span>
+                <span class="skill-tag">Redux</span>
+                <span class="skill-tag">Typescript</span>
+                <span class="skill-tag">Next.js</span>
+              </div>
+            </div>
+
+            <div class="skills-group">
+              <h4>Backend:</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Express.js</span>
+                <span class="skill-tag">PHP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-column">
+            <div class="skills-group">
+              <h4>Database:</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Firebase</span>
+                <span class="skill-tag">AWS RDS</span>
+                <span class="skill-tag">AWS EC2</span>
+                <span class="skill-tag">AWS S3</span>
+              </div>
+            </div>
+
+            <div class="skills-group">
+              <h4>Others:</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">Unity</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Git</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apps section -->
+    <section id="myapps" class="section">
+      <div class="container">
+        <div class="section-title center">
+          <h2>APPS</h2>
+          <div class="line"></div>
+        </div>
+        <div class="img-block">
+          <img
+            src="img/appz.webp"
+            alt="Published Mobile Apps"
+            class="apps-img"
+          />
+          <img
+            src="img/speedyhero_installs.webp"
+            alt="Speedy Hero Installs"
+            class="apps-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Projects section -->
+    <section id="keyprojects" class="section">
+      <div class="container">
+        <div class="section-title center">
+          <h2 data-lang-key="main-projects">MAIN PROJECTS</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="key-projects-grid">
+          <!-- Main Project 1 -->
+          <div class="key-project">
+            <div class="project-card">
+              <div class="project-slideshow">
+                <div class="slides-container">
+                  <img
+                    src="img/project1/slide1.png"
+                    alt="Project 1"
+                    class="slide active"
+                  />
+                  <img
+                    src="img/project1/slide2.png"
+                    alt="Project 1"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project1/slide3.png"
+                    alt="Project 1"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project1/slide4.png"
+                    alt="Project 1"
+                    class="slide"
+                  />
+                </div>
+                <button class="slide-nav prev" aria-label="Previous slide">
+                  <span class="icon-arrow-left"></span>
+                </button>
+                <button class="slide-nav next" aria-label="Next slide">
+                  <span class="icon-arrow-right"></span>
+                </button>
+              </div>
+              <div class="project-info">
+                <h4 data-lang-key="project1-title">AI 면접 & 피드백 도우미</h4>
+                <p
+                  class="project-description"
+                  data-lang-key="project1-description"
+                >
+                  취업 준비 과정에서 면접은 가장 중요한 관문임에도 불구하고,
+                  효과적인 연습 방법이 부족하다는 점을 직접 경험했습니다.
+                </p>
+                <div class="project-tech">
+                  <span class="skill-tag">Next.js</span>
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Tailwind CSS</span>
+                  <span class="skill-tag">PostgreSQL</span>
+                  <span class="skill-tag">Google Gemini AI</span>
+                  <span class="skill-tag">WebRTC</span>
+                </div>
+                <div class="project-buttons">
+                  <a
+                    href="https://ai-interview-app-u24p.vercel.app/"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="live-demo"
+                    >Live Demo</a
+                  >
+
+                  <a
+                    href="https://github.com/whd793/AI-Interview-App"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="github"
+                    >GitHub</a
+                  >
+                  <button
+                    class="project-details-btn"
+                    data-lang-key="view-details"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Project 2 -->
+          <div class="key-project">
+            <div class="project-card">
+              <div class="project-slideshow">
+                <div class="slides-container">
+                  <img
+                    src="img/project2/slide1.png"
+                    alt="Project 2"
+                    class="slide active"
+                  />
+                  <img
+                    src="img/project2/slide2.png"
+                    alt="Project 2"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project2/slide3.png"
+                    alt="Project 2"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project2/slide4.png"
+                    alt="Project 2"
+                    class="slide"
+                  />
+                </div>
+                <button class="slide-nav prev" aria-label="Previous slide">
+                  <span class="icon-arrow-left"></span>
+                </button>
+                <button class="slide-nav next" aria-label="Next slide">
+                  <span class="icon-arrow-right"></span>
+                </button>
+              </div>
+              <div class="project-info">
+                <h4 data-lang-key="project2-title">
+                  PodStream - 팟캐스트 라디오 플랫폼
+                </h4>
+                <p
+                  class="project-description"
+                  data-lang-key="project2-description"
+                >
+                  사용자들이 오디오와 비디오 팟캐스트를 쉽게 공유하고
+                  시청/청취할 수 있는 스트리밍 플랫폼입니다.
+                </p>
+                <div class="project-tech">
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">MongoDB</span>
+                  <span class="skill-tag">AWS</span>
+                  <span class="skill-tag">Redux</span>
+                </div>
+                <div class="project-buttons">
+                  <a
+                    href="https://podcastaudio.netlify.app/"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="live-demo"
+                    >Live Demo</a
+                  >
+
+                  <a
+                    href="https://github.com/whd793/podcast"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="github"
+                    >GitHub</a
+                  >
+                  <button
+                    class="project-details-btn"
+                    data-lang-key="view-details"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Project 3 -->
+          <div class="key-project">
+            <div class="project-card">
+              <div class="project-slideshow">
+                <div class="slides-container">
+                  <img
+                    src="img/project3/slide1.png"
+                    alt="Project 3"
+                    class="slide active"
+                  />
+                  <img
+                    src="img/project3/slide2.png"
+                    alt="Project 3"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project3/slide3.png"
+                    alt="Project 3"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project3/slide4.png"
+                    alt="Project 3"
+                    class="slide"
+                  />
+                </div>
+                <button class="slide-nav prev" aria-label="Previous slide">
+                  <span class="icon-arrow-left"></span>
+                </button>
+                <button class="slide-nav next" aria-label="Next slide">
+                  <span class="icon-arrow-right"></span>
+                </button>
+              </div>
+              <div class="project-info">
+                <h4 data-lang-key="project3-title">
+                  오프라인 매장을 위한 문자 구독 & 마케팅 서비스
+                </h4>
+                <p
+                  class="project-description"
+                  data-lang-key="project3-description"
+                >
+                  레스토랑 업계가 직면한 디지털 전환의 어려움을 해결하고자 통합
+                  마케팅 플랫폼을 개발하였습니다.
+                </p>
+                <div class="project-tech">
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Express</span>
+                  <span class="skill-tag">MongoDB</span>
+                  <span class="skill-tag">AWS</span>
+                  <span class="skill-tag">Redux</span>
+                  <span class="skill-tag">Twilio API</span>
+                  <span class="skill-tag">Stripe API</span>
+                </div>
+                <div class="project-buttons">
+                  <a
+                    href="https://smsbiz.netlify.app/"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="live-demo"
+                    >Live Demo</a
+                  >
+
+                  <a
+                    href="https://github.com/whd793/sms-startup"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="github"
+                    >GitHub</a
+                  >
+                  <button
+                    class="project-details-btn"
+                    data-lang-key="view-details"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Project 4 -->
+          <div class="key-project">
+            <div class="project-card">
+              <div class="project-slideshow">
+                <div class="slides-container">
+                  <img
+                    src="img/project4/slide1.png"
+                    alt="Project 4"
+                    class="slide active"
+                  />
+                  <img
+                    src="img/project4/slide2.png"
+                    alt="Project 4"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project4/slide3.png"
+                    alt="Project 4"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project4/slide4.png"
+                    alt="Project 4"
+                    class="slide"
+                  />
+                </div>
+                <button class="slide-nav prev" aria-label="Previous slide">
+                  <span class="icon-arrow-left"></span>
+                </button>
+                <button class="slide-nav next" aria-label="Next slide">
+                  <span class="icon-arrow-right"></span>
+                </button>
+              </div>
+              <div class="project-info">
+                <h4 data-lang-key="project4-title">이커머스 사이트</h4>
+                <p
+                  class="project-description"
+                  data-lang-key="project4-description"
+                >
+                  이커머스 플랫폼 개발 프로젝트를 통해 제가 가진 기술력과 문제
+                  해결 능력을 증명하고자 했습니다.
+                </p>
+                <div class="project-tech">
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Redux</span>
+                  <span class="skill-tag">Firebase</span>
+                </div>
+                <div class="project-buttons">
+                  <a
+                    href="https://clothing-shop-ecom.netlify.app/"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="live-demo"
+                    >Live Demo</a
+                  >
+
+                  <a
+                    href="https://github.com/whd793/Shopping-ecommerce"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="github"
+                    >GitHub</a
+                  >
+                  <button
+                    class="project-details-btn"
+                    data-lang-key="view-details"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Project 5 -->
+          <div class="key-project">
+            <div class="project-card">
+              <div class="project-slideshow">
+                <div class="slides-container">
+                  <img
+                    src="img/project5/slide1.png"
+                    alt="Project 5"
+                    class="slide active"
+                  />
+                </div>
+                <button class="slide-nav prev" aria-label="Previous slide">
+                  <span class="icon-arrow-left"></span>
+                </button>
+                <button class="slide-nav next" aria-label="Next slide">
+                  <span class="icon-arrow-right"></span>
+                </button>
+              </div>
+              <div class="project-info">
+                <h4 data-lang-key="project5-title">
+                  Speedy Hero - 모바일 게임
+                </h4>
+                <p
+                  class="project-description"
+                  data-lang-key="project5-description"
+                >
+                  초고속 이동이 가능한 캐릭터가 장애물을 피하며 끝없이 달리는
+                  러너(Runner) 게임입니다.
+                </p>
+                <div class="project-tech">
+                  <span class="skill-tag">Unity</span>
+                  <span class="skill-tag">C#</span>
+                  <span class="skill-tag">Mobile</span>
+                </div>
+                <div class="project-buttons">
+                  <a
+                    href="https://www.youtube.com/watch?v=tH6Hlx6yb9I"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="live-demo"
+                    >Demo</a
+                  >
+
+                  <a
+                    href="https://github.com/whd793/speed-hero-prototype"
+                    class="project-link-btn"
+                    target="_blank"
+                    data-lang-key="github"
+                    >GitHub</a
+                  >
+                  <button
+                    class="project-details-btn"
+                    data-lang-key="view-details"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Project 6 -->
+          <div class="key-project">
+            <div class="project-card">
+              <div class="project-slideshow">
+                <div class="slides-container">
+                  <img
+                    src="img/project6/slide1.png"
+                    alt="Project 6"
+                    class="slide active"
+                  />
+                  <img
+                    src="img/project6/slide2.webp"
+                    alt="Project 6"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project6/slide3.webp"
+                    alt="Project 6"
+                    class="slide"
+                  />
+                  <img
+                    src="img/project6/slide4.webp"
+                    alt="Project 6"
+                    class="slide"
+                  />
+                </div>
+                <button class="slide-nav prev" aria-label="Previous slide">
+                  <span class="icon-arrow-left"></span>
+                </button>
+                <button class="slide-nav next" aria-label="Next slide">
+                  <span class="icon-arrow-right"></span>
+                </button>
+              </div>
+              <div class="project-info">
+                <h4 data-lang-key="project6-title">
+                  Hyper Casual Game 프로젝트
+                </h4>
+                <p
+                  class="project-description"
+                  data-lang-key="project6-description"
+                >
+                  Unity 엔진을 활용하여 22개의 하이퍼 캐주얼 게임을 성공적으로
+                  개발했습니다. 개발 과정에서는 철저한 시장 조사를 실시하고,
+                  신속한 prototyping과 반복적인 개발 주기를 통해 사용자 피드백을
+                  기반으로 게임플레이 메커니즘을 지속적으로 개선했습니다.
+                </p>
+                <div class="project-tech">
+                  <span class="skill-tag">Unity</span>
+                  <span class="skill-tag">C#</span>
+                  <span class="skill-tag">Mobile</span>
+                </div>
+                <div class="project-buttons">
+                  <button
+                    class="project-details-btn"
+                    data-lang-key="view-details"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal for project details -->
+    <div id="project-modal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+
+        <div class="modal-slideshow">
+          <div class="modal-slides-container">
+            <!-- Slides will be dynamically added -->
+          </div>
+          <button class="slide-nav modal-prev" aria-label="Previous slide">
+            <span class="icon-arrow-left"></span>
+          </button>
+          <button class="slide-nav modal-next" aria-label="Next slide">
+            <span class="icon-arrow-right"></span>
+          </button>
+        </div>
+
+        <div class="modal-info">
+          <h3 class="modal-title"></h3>
+          <div class="modal-description"></div>
+          <div class="modal-tech"></div>
+          <div class="modal-links">
+            <a
+              href="#"
+              class="link-button modal-demo-link"
+              data-lang-key="live-demo"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text">LIVE DEMO</div>
+            </a>
+
+            <a
+              href="#"
+              class="link-button modal-code-link"
+              data-lang-key="source-code"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text">SOURCE CODE</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio section with masonry layout -->
+    <section id="portfolio" class="section">
+      <div class="section-title center">
+        <h2>OTHER PROJECTS</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="masonry-grid">
+        <!-- Portfolio item 1 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img src="img/webp/1.webp" alt="Bouncy Shot" class="lazy-gif" />
+            
+            <h4>Bouncy Shot</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 2 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img src="img/webp/2.webp" alt="Rolly Shot" class="lazy-gif" />
+          
+            <h4>Rolly Shot</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 3 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/bb.png"
+              data-src="img/bb.gif"
+              alt="Hoop Gatez"
+            />
+           
+            <h4>Hoop Gatez</h4>
+
+            <a
+              href="https://github.com/whd793/Hoop-Gatez-Unity-Prototype"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 4 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/7.webp"
+              data-src="img/7.gif"
+              alt="Speedy Hero"
+            />
+            <h4>Speedy Hero</h4>
+
+            <a
+              href="https://www.youtube.com/watch?v=tH6Hlx6yb9I"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="demo">DEMO</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 5 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/2.png"
+              data-src="img/2.gif"
+              alt="Flappy Spin"
+            />
+            <h4>Flappy Spin</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 7 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/1.webp"
+              data-src="img/1.gif"
+              alt="Spike Ball"
+            />
+            <h4>Spike Ball</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 8 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/3.webp"
+              data-src="img/3.gif"
+              alt="Hoop Dash"
+            />
+            <h4>Hoop Dash</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 9 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/brick.webp"
+              data-src="img/brickz.gif"
+              alt="Bouncy Brickz"
+            />
+            <h4>Bouncy Brickz</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 10 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/4.webp"
+              data-src="img/4.gif"
+              alt="Speed Dash"
+            />
+            <h4>Speed Dash</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 11 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/8.webp"
+              data-src="img/8.gif"
+              alt="Dashy Hoop"
+            />
+            <h4>Dashy Hoop</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 14 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              src="img/webp/6.webp"
+              alt="Flappy Shuriken App"
+              class="lazy-gif"
+            />
+            <h4>Flappy Shuriken App</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 15 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img src="img/webp/7.webp" alt="Kunai Flip App" class="lazy-gif" />
+            <h4>Kunai Flip App</h4>
+
+            <a
+              href="https://github.com/whd793/KunaiFlip-Game"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 16 -->
+        <div class="masonry-item html">
+          <div class="card">
+            <img src="img/pofo.png" alt="Portfolio Website" class="lazy-gif" />
+            <h4>Portfolio Website</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 17 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              src="img/webp/blasthit.webp"
+              alt="Blast Hit"
+              class="lazy-gif"
+            />
+            <h4>Blast Hit</h4>
+
+            <a
+              href="https://github.com/whd793/Blast-Hit-Game"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 18 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/soccerio1.webp"
+              data-src="img/soccerio.gif"
+              alt="Soccer.io"
+            />
+            <h4>Soccer.io</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 19 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/speedyhero.webp"
+              data-src="img/speedyhero.gif"
+              alt="Speed Hero"
+            />
+            <h4>Speed Hero</h4>
+
+            <a
+              href="https://github.com/whd793/speed-hero-prototype"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 20 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <!-- <img
+              src="img/100dunkb.gif"
+              alt="100 Dunk Ballz"
+              class="lazy-gif"
+            /> -->
+            <img
+            class="lazy-gif"
+            src="img/100dunkb.png"
+            data-src="img/100dunkb.gif"
+            alt="100 Dunk Ballz"
+          />
+            <h4>100 Dunk Ballz</h4>
+
+            <a
+              href="https://github.com/whd793/100dunkballz-iOS-game"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 21 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/5.webp"
+              data-src="img/5.gif"
+              alt="Flippy Golf"
+            />
+            <h4>Flippy Golf</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 22 -->
+        <div class="masonry-item html">
+          <div class="card">
+            <img
+              src="img/webp/trello.webp"
+              alt="Trello Clone"
+              class="lazy-gif"
+            />
+            <h4>Trello Clone</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 23 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="vids/14.webp"
+              data-src="vids/14.gif"
+              alt="Hunter Boy"
+            />
+            <h4>Hunter Boy</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 24 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <img
+              class="lazy-gif"
+              src="img/6.webp"
+              data-src="img/6.gif"
+              alt="Shooting Arrow"
+            />
+            <h4>Shooting Arrow</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 25 -->
+        <div class="masonry-item unity">
+          <div class="card">
+            <!-- <img src="vids/chick.gif" alt="Chicken Jump" class="lazy-gif" /> -->
+            <img
+            class="lazy-gif"
+            src="vids/chick.webp"
+            data-src="vids/chick.gif"
+            alt="Chicken Jump"
+          />
+            <h4>Chicken Jump</h4>
+          </div>
+        </div>
+
+        <div class="masonry-item unity">
+          <div class="card">
+            <!-- <img src="img/10.gif" alt="Blast Hit" class="lazy-gif" /> -->
+            <img
+            class="lazy-gif"
+            src="img/10.webp"
+            data-src="img/10.gif"
+            alt="Blast Hit"
+          />
+            <h4>Blast Hit</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 28 -->
+        <div class="masonry-item react">
+          <div class="card">
+            <img src="img/gifi.webp" alt="React.js Gifsearch" class="lazy-gif" />
+            <h4>React.js Gifsearch</h4>
+
+            <a
+              href="https://github.com/whd793/gif-search-react/tree/main"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 29 -->
+        <div class="masonry-item react">
+          <div class="card">
+            <img
+              src="img/webp/fullstackblog.webp"
+              alt="React.js Blog"
+              class="lazy-gif"
+            />
+            <h4>React.js Blog</h4>
+
+            <a
+              href="https://github.com/whd793/react-jsonserver-blog-fullstack"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 30 -->
+        <div class="masonry-item react">
+          <div class="card">
+            <img
+              src="img/dataviz.png"
+              alt="D3.js Data Visualization"
+              class="lazy-gif"
+            />
+            <h4>D3.js Interactive Data & Visualization</h4>
+            <a href="https://lpqqf9.csb.app/" class="link-button">
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="demo">DEMO</div>
+            </a>
+
+            <a
+              href="https://codesandbox.io/p/sandbox/data-visualization-uk-traffic-lpqqf9"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 26 -->
+        <div class="masonry-item html">
+          <div class="card">
+            <img
+              src="img/gomshabu.png"
+              alt="Freelance Website"
+              class="lazy-gif"
+            />
+            <h4>Freelance Restaurant Website</h4>
+          </div>
+        </div>
+
+        <div class="masonry-item react">
+          <div class="card">
+            <img src="img/9.png" alt="Next.js Blog" class="lazy-gif" />
+            <h4>Next.js Blog</h4>
+
+            <a
+              href="https://personal-blog-client-i8me.vercel.app/"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="demo">DEMO</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 32 -->
+        <div class="masonry-item react">
+          <div class="card">
+            <img
+              src="img/webp/budgettracker.webp"
+              alt="React.js Budget Expense Tracker"
+              class="lazy-gif"
+            />
+            <h4>React.js Budget Expense Tracker</h4>
+            <a href="https://esdiz.csb.app/" class="link-button">
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="demo">DEMO</div>
+            </a>
+
+            <a
+              href="https://github.com/whd793/React-budget-expense-tracker"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 27 -->
+        <div class="masonry-item html php">
+          <div class="card">
+            <img
+              src="vids/purduerifle.webp"
+              alt="Freelance Web PHP"
+              class="lazy-gif"
+            />
+            <h4>Freelance Website</h4>
+            <a href="https://web.ics.purdue.edu/~gunclub/" class="link-button">
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="demo">DEMO</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 26 -->
+        <div class="masonry-item html">
+          <div class="card">
+            <img
+              src="img/webp/responsiveweb.webp"
+              alt="Freelance Website"
+              class="lazy-gif"
+            />
+            <h4>Freelance Website</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 33 -->
+        <div class="masonry-item react">
+          <div class="card">
+            <!-- <img
+              src="img/tiktok-clone.gif"
+              alt="React.js Tiktok Clone"
+              class="lazy-gif"
+            /> -->
+            <img
+            class="lazy-gif"
+            src="img/tiktok-clone.png"
+            data-src="img/tiktok-clone.gif"
+            alt="Tiktok Clone"
+          />
+            <h4>React.js Tiktok</h4>
+
+            <a
+              href="https://github.com/whd793/tiktok-clone-react"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 34 -->
+        <div class="masonry-item react">
+          <div class="card">
+            <img
+              src="img/webp/netflix-clone.webp"
+              alt="Next.js Netflix"
+              class="lazy-gif"
+            />
+            <h4>Next.js Netflix</h4>
+
+            <a
+              href="https://github.com/whd793/netflix-clone-nextjs"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio item 35 -->
+        <div class="masonry-item html">
+          <div class="card">
+            <img
+              src="img/webp/fullstackconf.webp"
+              alt="Web HTML CSS JS"
+              class="lazy-gif"
+            />
+            <h4>Freelance Website</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 36 -->
+        <div class="masonry-item html">
+          <div class="card">
+            <img
+              src="img/webp/uberrating.webp"
+              alt="Uber Rating System Design"
+              class="lazy-gif"
+            />
+            <h4>Uber Rating System Design UX/UI - Adobe XD</h4>
+          </div>
+        </div>
+
+        <!-- Portfolio item 31 -->
+        <div class="masonry-item react">
+          <div class="card">
+            <img
+              src="img/webp/crud.webp"
+              alt="React.js CRUD Blog"
+              class="lazy-gif"
+            />
+            <h4>React.js CRUD Blog</h4>
+
+            <a
+              href="https://github.com/whd793/react-CRUD-blog"
+              class="link-button"
+            >
+              <div class="btn-bg"></div>
+              <div class="btn-text" data-lang-key="source-code">
+                SOURCE CODE
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog section -->
+    <section id="blog" class="section">
+      <div class="section-title center">
+        <h2>BLOG</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Blog post 1 -->
+
+        <a
+          href="https://wonblog.vercel.app/posts/67d527afa1ed8496beee41f4"
+          target="_blank"
+          class="blog-item-link"
+        >
+          <div class="blog-item">
+            <div class="blog-card">
+              <h4>
+                사용자가 스크롤을 멈출 때 뷰포트에 보이는 제품 캡처/저장 하기 -
+                (데이터 수집)
+              </h4>
+              <div class="blog-tags">
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Web Development</span>
+                <span class="skill-tag">React</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Blog post 2 -->
+
+        <a
+          href="https://wonblog.vercel.app/posts/67d51eb1a1ed8496beee3edd"
+          target="_blank"
+          class="blog-item-link"
+        >
+          <div class="blog-item">
+            <div class="blog-card">
+              <h4>React에서 useDebounce() 훅 구현하기</h4>
+              <div class="blog-tags">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Frontend</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Blog post 3 -->
+
+        <a
+          href="https://wonblog.vercel.app/posts/67d523cca1ed8496beee40b0"
+          target="_blank"
+          class="blog-item-link"
+        >
+          <div class="blog-item">
+            <div class="blog-card">
+              <h4>JavaScript에서 프로미스를 N번 재시도하기</h4>
+              <div class="blog-tags">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Frontend</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Blog post 4 -->
+
+        <a
+          href="https://wonblog.vercel.app/posts/67d51e4fa1ed8496beee3e9e"
+          target="_blank"
+          class="blog-item-link"
+        >
+          <div class="blog-item">
+            <div class="blog-card">
+              <h4>React에서 useThrottle() 훅 구현하기</h4>
+              <div class="blog-tags">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Frontend</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Blog post 5 -->
+
+        <a
+          href="https://wonblog.vercel.app/posts/67d5c5079feafe82687c67d6"
+          target="_blank"
+          class="blog-item-link"
+        >
+          <div class="blog-item">
+            <div class="blog-card">
+              <h4>JavaScript에서 Promise 클래스 구현하기</h4>
+              <div class="blog-tags">
+                <span class="skill-tag">Javascript</span>
+                <span class="skill-tag">Frontend</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Blog post 6 -->
+
+        <a
+          href="https://wonblog.vercel.app/posts/67d5d2aa3672534d69a323cc"
+          target="_blank"
+          class="blog-item-link"
+        >
+          <div class="blog-item">
+            <div class="blog-card">
+              <h4>
+                웹 성능의 비밀: 크리티컬 렌더링 패스 Critical Rendering Path
+              </h4>
+              <div class="blog-tags">
+                <span class="skill-tag">Web</span>
+                <span class="skill-tag">Frontend</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-more-container">
+        <a
+          href="https://personal-blog-client-i8me.vercel.app/"
+          target="_blank"
+          class="btn btn-white"
+        >
+          <div class="btn-bg"></div>
+          <div class="btn-text" data-lang-key="see-more-articles">
+            See More Articles
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer section -->
+    <footer id="footer" class="section">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="#home" class="logo">W<span>.</span></a>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-links-group">
+              <h4>Contact</h4>
+              <ul>
+                <li>
+                  <a href="mailto:whd793@gmail.com"
+                    ><span class="icon icon-envelope"></span>
+                    whd793@gmail.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-links-group">
+              <h4>Links</h4>
+              <ul>
+                <li>
+                  <a href="https://github.com/whd793" target="_blank"
+                    ><span class="icon icon-github"></span> GitHub</a
+                  >
+                </li>
+                <li>
+                  <a href="https://linkedin.com/in/whd793" target="_blank"
+                    ><span class="icon icon-linkedin"></span> LinkedIn</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-links-group">
+              <h4>Resources</h4>
+              <ul>
+                <li>
+                  <a href="resume-korean.pdf" target="_blank">Resume Korean</a>
+                </li>
+                <li>
+                  <a href="resume.pdf" target="_blank">Resume English</a>
+                </li>
+                <li>
+                  <a href="img/portfolio-korean.pdf" target="_blank"
+                    >Portfolio PDF Korean</a
+                  >
+                </li>
+                <li>
+                  <a href="img/portfolio-english.pdf" target="_blank"
+                    >Portfolio PDF English</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://personal-blog-client-i8me.vercel.app/"
+                    target="_blank"
+                    >Blog</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 Won Lee. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#top" class="go-top" id="go-top" title="Go to Top">
+      <span class="icon icon-arrow-up"></span>
+    </a>
+
+    <!-- Custom JavaScript - no external dependencies -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const img = new Image();
+        img.src = 'vids/test.webp';
+        img.onload = function() {
+          const placeholder = document.getElementById('carousel-placeholder');
+          if (placeholder) {
+            placeholder.style.display = 'none';
+          }
+        };
+      });
+    </script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
