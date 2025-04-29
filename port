@@ -191,6 +191,7 @@
               <li><a href="#myapps" class="nav-link">Apps</a></li>
               <li><a href="#keyprojects" class="nav-link">Main Projects</a></li>
               <li><a href="#portfolio" class="nav-link">Other Projects</a></li>
+              <li><a href="#blog" class="nav-link">Blog</a></li>
               <li class="language-switch">
                 <button id="lang-ko" class="lang-btn active" data-lang="ko">
                   한국어
@@ -300,7 +301,7 @@
         
           <div class="bzbz ">
             <a
-              href="img/.pdf"
+              href="img/portfolio-korean.pdf"
               class="bzbz2"
               data-lang-key="portfolio-pdf"
               target="_blank"
@@ -308,7 +309,7 @@
               <div class="btn-text">포트폴리오 PDF</div>
             </a>
             <a
-              href="img/.pdf"
+              href="img/portfolio-korean.pdf"
               class="bzbz2"
               data-lang-key="portfolio-pdf-eng"
               target="_blank"
@@ -335,7 +336,7 @@
             </a>
           
             <a
-            href=".app"
+            href="https://wonblog.vercel.app"
             class="bzbz2"
             data-lang-key="blog"
             target="_blank"
